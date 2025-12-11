@@ -6,76 +6,133 @@
     <title>Kalkulator Dana Pensiun</title>
     <link rel="stylesheet" href="style.css" />
 </head>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="app.js"></script>
+
 <body>
 
+<!-- ====================== HALAMAN AWAL ====================== -->
+<div id="welcomeScreen" style="text-align:center; padding:25px;">
+
+    <h1 style="font-size:32px;">✨Selamat Datang✨</h1>
+
+    <p style="font-size:18px; margin-top:15px; margin-left:15px; margin-right:15px;">
+        di Kalkulator Perhitungan Manfaat Dana Pensiun MilkaAlma.
+    </p>
+
+    <p style="font-size:18px; margin-top:15px; margin-left:15px; margin-right:15px;"></p>
+    Kalkulator ini dapat digunakan untuk menghitung besar manfaat bulanan* serta menampilkan grafik peningkatan gaji selama masa kerja.
+    </p>
+
+
+    <!-- Tombol peraturan -->
+    <button style="width:60%; margin-top:20px;" onclick="showRules()">
+        *Peraturan Perhitungan Manfaat
+    </button>
+
+    <!-- Kotak penjelasan aturan (awal: hidden) -->
+    <div id="rulesBox" style="
+        display:none;
+        margin-top:20px;
+        background:#eef5ff;
+        padding:15px;
+        border-radius:10px;
+        text-align:left;
+    ">
+        Perhitungan manfaat pensiun didasarkan pada Undang-Undang Nomor 11 Tahun 1969 pasal 11 
+        dengan rumus: <br><br>
+        <b>2,5% × Masa Kerja × Gaji Pokok Terakhir</b><br><br>
+        Nilai faktor 2,5% × Masa Kerja memiliki batas:<br>
+        • Maksimal: 75%<br>
+        • Minimal: 40%<br><br>
+        Gaji pokok terakhir dihitung dengan rumus:<br>
+        <b>Gaji Awal × (1 + rasio)<sup>Masa kerja</sup></b>
+    </div>
+
+    <!-- Tombol mulai -->
+    <button style="width:60%; margin-top:25px; background:#e63c3c;" onclick="startCalculator()">
+        Mulai Menghitung
+    </button>
+
+</div>
+<!-- =================== END HALAMAN AWAL ===================== -->
+
+<div class="container" style="display:none">
+    
     <h1>Kalkulator Manfaat Dana Pensiun</h1>
 
-    <label>Pilih Jenis Pensiun:</label>
-    <select id="tipePensiun" onchange="toggleForm()">
-        <option value="">-- Pilih --</option>
-        <option value="pribadi">Dana Pensiun Pribadi</option>
-        <option value="pasangan">Dana Pensiun dengan Pasangan</option>
-    </select>
+    <form id="calcForm">
 
-    <div id="formPribadi" class="form-section" style="display:none">
-        <h2>Input Data Dana Pensiun Pribadi</h2>
-
-        <label>Usia saat masuk kerja:</label>
-        <input type="number" id="p_ageStart">
-
-        <label>Jenis kelamin:</label>
-        <select id="p_gender">
-            <option>Laki-laki</option>
-            <option>Perempuan</option>
+        <label>Pilih Jenis Pensiun:</label>
+        <select id="tipePensiun" onchange="toggleForm()">
+            <option value="">-- Pilih --</option>
+            <option value="pribadi">Dana Pensiun Pribadi</option>
+            <option value="pasangan">Dana Pensiun dengan Pasangan</option>
         </select>
 
-        <label>Usia pensiun:</label>
-        <input type="number" id="p_ageRetire">
+        <!-- Form Pribadi -->
+        <div id="formPribadi" class="form-section" style="display:none">
+            <input type="number" placeholder="Usia Masuk Kerja" class="input-box" id="p_ageStart">
 
-        <label>Gaji awal (dalam juta, misal: 10, untuk 10 juta):</label>
-        <input type="number" id="p_salary">
+            <label>Jenis kelamin:</label>
+            <select id="p_gender">
+                <option>Laki-laki</option>
+                <option>Perempuan</option>
+            </select>
 
-        <label>Rasio kenaikan gaji (misal: 0.01, untuk 1%):</label>
-        <input type="number" step="0.001" id="p_raise">
-    </div>
+            <input type="number" placeholder="Usia pensiun" class="input-box" id="p_ageRetire">
 
+            <input type="number" placeholder="Gaji awal (dalam juta, misal: 10)" class="input-box" id="p_salary">
 
-    <div id="formPasangan" class="form-section" style="display:none">
-        <h2>Input Dana Pensiun Pasangan</h2>
+            <input type="number" placeholder="Rasio kenaikan gaji (misal: 0.01)" class="input-box" step="0.001" id="p_raise">
+        </div>
 
-        <label>Usia peserta saat masuk kerja:</label>
-        <input type="number" id="sp_ageStart">
+        <!-- Form Pasangan -->
+        <div id="formPasangan" class="form-section" style="display:none">
+            <h2>Input Dana Pensiun Pasangan</h2>
 
-        <label>Jenis kelamin peserta:</label>
-        <select id="sp_gender">
-            <option>Laki-laki</option>
-            <option>Perempuan</option>
-        </select>
+            <label>Usia peserta saat masuk kerja:</label>
+            <input type="number" id="sp_ageStart">
 
-        <label>Usia peserta saat pensiun:</label>
-        <input type="number" id="sp_ageRetire">
+            <label>Jenis kelamin peserta:</label>
+            <select id="sp_gender">
+                <option>Laki-laki</option>
+                <option>Perempuan</option>
+            </select>
 
-        <label>Usia pasangan:</label>
-        <input type="number" id="sp_partnerAge">
+            <label>Usia peserta saat pensiun:</label>
+            <input type="number" id="sp_ageRetire">
 
-        <label>Jenis kelamin pasangan:</label>
-        <select id="sp_partnerGender">
-            <option>Laki-laki</option>
-            <option>Perempuan</option>
-        </select>
+            <label>Usia pasangan:</label>
+            <input type="number" id="sp_partnerAge">
 
-        <label>Gaji awal (dalam juta, misal: 10, untuk 10 juta):</label>
-        <input type="number" id="sp_salary">
+            <label>Jenis kelamin pasangan:</label>
+            <select id="sp_partnerGender">
+                <option>Laki-laki</option>
+                <option>Perempuan</option>
+            </select>
 
-        <label>Rasio kenaikan gaji (misal 0.01 untuk 1%):</label>
-        <input type="number" step="0.001" id="sp_raise">
-    </div>
+            <label>Gaji awal (dalam juta):</label>
+            <input type="number" id="sp_salary">
 
-    <button onclick="calculateBenefit()">Hitung</button>
+            <label>Rasio kenaikan gaji (misal 0.01):</label>
+            <input type="number" step="0.001" id="sp_raise">
+        </div>
 
-    <h2>Hasil:</h2> 
-    <p id="result"></p>
+        <button type="button" onclick="calculateBenefit()">Hitung</button>
 
-    <script src="app.js"></script>
+        <h2>Hasil:</h2>
+        <p id="result"></p>
+
+        <canvas id="salaryChart" style="margin-top:30px;"></canvas>
+
+    </form>
+    <button type="button" id="backBtn" style="margin-bottom:20px; background:#e63c3c;" onclick="goBack()">
+        ⬅ Kembali
+    </button>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
