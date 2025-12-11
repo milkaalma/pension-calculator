@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Dana Pensiun</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <h1>Kalkulator Manfaat Dana Pensiun</h1>
+
+    <label>Pilih Jenis Pensiun:</label>
+    <select id="tipePensiun" onchange="toggleForm()">
+        <option value="">-- Pilih --</option>
+        <option value="pribadi">Dana Pensiun Pribadi</option>
+        <option value="pasangan">Dana Pensiun dengan Pasangan</option>
+    </select>
+
+    <div id="formPribadi" class="form-section" style="display:none">
+        <h2>Input Data Dana Pensiun Pribadi</h2>
+
+        <label>Usia saat masuk kerja:</label>
+        <input type="number" id="p_ageStart">
+
+        <label>Jenis kelamin:</label>
+        <select id="p_gender">
+            <option>Laki-laki</option>
+            <option>Perempuan</option>
+        </select>
+
+        <label>Usia pensiun:</label>
+        <input type="number" id="p_ageRetire">
+
+        <label>Gaji awal (dalam juta, misal: 10, untuk 10 juta):</label>
+        <input type="number" id="p_salary">
+
+        <label>Rasio kenaikan gaji (misal: 0.01, untuk 1%):</label>
+        <input type="number" step="0.001" id="p_raise">
+    </div>
+
+
+    <div id="formPasangan" class="form-section" style="display:none">
+        <h2>Input Dana Pensiun Pasangan</h2>
+
+        <label>Usia peserta saat masuk kerja:</label>
+        <input type="number" id="sp_ageStart">
+
+        <label>Jenis kelamin peserta:</label>
+        <select id="sp_gender">
+            <option>Laki-laki</option>
+            <option>Perempuan</option>
+        </select>
+
+        <label>Usia peserta saat pensiun:</label>
+        <input type="number" id="sp_ageRetire">
+
+        <label>Usia pasangan:</label>
+        <input type="number" id="sp_partnerAge">
+
+        <label>Jenis kelamin pasangan:</label>
+        <select id="sp_partnerGender">
+            <option>Laki-laki</option>
+            <option>Perempuan</option>
+        </select>
+
+        <label>Gaji awal (dalam juta, misal: 10, untuk 10 juta):</label>
+        <input type="number" id="sp_salary">
+
+        <label>Rasio kenaikan gaji (misal 0.01 untuk 1%):</label>
+        <input type="number" step="0.001" id="sp_raise">
+    </div>
+
+    <button onclick="calculateBenefit()">Hitung</button>
+
+    <h2>Hasil:</h2> 
+    <p id="result"></p>
+
+    <script src="app.js"></script>
+</body>
+</html>
