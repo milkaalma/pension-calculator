@@ -1,32 +1,158 @@
 body {
-  font-family: Arial, sans-serif;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #5A89F7, #7ec8ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.container {
+  background: white;
+  width: 90%;
+  max-width: 700px;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #1f2d55;
+  margin-bottom: 30px;
 }
 
 label {
   display: block;
-  margin-top: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1d2a4d;
 }
 
 input, select {
   width: 100%;
-  padding: 8px;
-  margin-top: 6px;
+  box-sizing: border-box;
+  padding: 14px;
+  font-size: 15px;
+  border: 1px solid #d5ddeb;
+  border-radius: 12px;
+  background: #ffffff;
+  outline: none;
+  transition: 0.2s;
+  margin-bottom: 18px;
+}
+
+input:focus, select:focus {
+  border-color: #4f79ff;
+  box-shadow: 0 0 5px rgba(79,121,255,0.3);
 }
 
 button {
-  margin-top: 20px;
-  padding: 12px;
   width: 100%;
-  font-size: 16px;
+  padding: 15px;
+  background: #4f67ff;
+  border: none;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 12px;
   cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
 }
 
-.form-section {
+button:hover {
+  background: #3c52e6;
+}
+
+.result-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: #2c3a63;
+}
+
+.output-box {
+  background: #eef5ff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  min-height: 40px;
+}
+
+/* ================= HALAMAN AWAL ================= */
+
+#welcomeScreen {
+  text-align: center;
+  margin-top: 20px;
+  padding: 25px;
+  background: white;
+  border-radius: 15px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  animation: fadeIn 0.5s ease;
+}
+
+.welcome-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1f2d55;
+  margin-bottom: 10px;
+}
+
+.welcome-subtitle {
+  font-size: 18px;
+  color: #2c3a63;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+#showRulesBtn {
+  background: #ffffff;
+  border: 2px solid #4f67ff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #4f67ff;
+  margin-top: 10px;
+  transition: 0.2s;
+  font-size: 15px;
+}
+
+#showRulesBtn:hover {
+  background: #4f67ff;
+  color: white;
+}
+
+#rulesText {
+  background: #eef5ff;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  display: none;
+  color: #2c3a63;
+  line-height: 1.5;
+}
+
+#startBtn {
+  width: 100%;
   margin-top: 20px;
   padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  font-size: 18px;
+  background: #4f67ff;
+  border: none;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
 }
+
+#startBtn:hover {
+  background: #3c52e6;
+}
+
