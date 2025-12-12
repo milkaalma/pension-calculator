@@ -53,12 +53,10 @@ Try it here:
 ***
 
 ## 🖼️ Preview
-<img width="400" height="883" alt="image" src="https://github.com/user-attachments/assets/77a07e20-c7c6-4c3e-8c28-ff0180f209f0" />
-<img width="400" height="881" alt="image" src="https://github.com/user-attachments/assets/7b4100a8-7f29-4457-9217-b88206ec3567" />
-<img width="400" height="877" alt="image" src="https://github.com/user-attachments/assets/cf4c86e4-4bf3-4d47-b5c8-8b0aa0218f2d" />
-<img width="400" height="876" alt="image" src="https://github.com/user-attachments/assets/966255d1-6c10-46f4-8abf-d8180edc0340" />
-<img width="400" height="871" alt="image" src="https://github.com/user-attachments/assets/8b35252a-ed3b-4627-9b0e-11e07b1d4f0f" />
-<img width="400" height="877" alt="image" src="https://github.com/user-attachments/assets/7722aff2-4387-4615-8f23-a9ae521e3b08" />
+|<img width="400" height="883" alt="image" src="https://github.com/user-attachments/assets/77a07e20-c7c6-4c3e-8c28-ff0180f209f0" />|<img width="400" height="881" alt="image" src="https://github.com/user-attachments/assets/7b4100a8-7f29-4457-9217-b88206ec3567" />|
+|-----------------------------------|----------------------------------------|
+|<img width="400" height="877" alt="image" src="https://github.com/user-attachments/assets/cf4c86e4-4bf3-4d47-b5c8-8b0aa0218f2d" />|<img width="400" height="876" alt="image" src="https://github.com/user-attachments/assets/966255d1-6c10-46f4-8abf-d8180edc0340" />|
+|<img width="400" height="871" alt="image" src="https://github.com/user-attachments/assets/8b35252a-ed3b-4627-9b0e-11e07b1d4f0f" /> |<img width="400" height="877" alt="image" src="https://github.com/user-attachments/assets/7722aff2-4387-4615-8f23-a9ae521e3b08" /> |
 ***
 
 ## 📝 Notes & Limitations
